@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<title>Er is een zorgverlener gevonden — SamenOntzorgen</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<style>
+  :root{
+    --paper:#fbfaf7; --sand:#f3f0ea; --card:#ffffff;
+    --ink:#1c2b2d; --muted:#5d6763; --line:#e4e0d8; --line-strong:#cfc9bd;
+    --teal:#19ada7; --teal-deep:#0e7c76; --teal-wash:#e6f4f2; --teal-ink:#0a5a55;
+    --on-ink:#f4f2ec; --on-ink-dim:#b7c2c0;
+    --serif:Georgia,'Iowan Old Style','Source Serif 4','Times New Roman',serif;
+    --sans:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --radius:14px; --shadow:0 1px 2px rgba(28,43,45,.04),0 8px 30px rgba(28,43,45,.06);
+    color-scheme:light;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  img{max-width:100%;display:block;}
+  a{color:var(--teal-deep);text-decoration:none;}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;margin:0;text-wrap:balance;}
+  .container{width:100%;max-width:1120px;margin:0 auto;padding:0 24px;}
+  section{padding:clamp(48px,7vw,88px) 0;}
+  .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--teal-deep);margin-bottom:16px;}
+  header.nav{background:var(--paper);border-bottom:1px solid var(--line);}
+  header.nav .container{display:flex;align-items:center;min-height:78px;}
+  .logo{width:210px;max-width:52vw;}
+  .hero{background:var(--ink);color:var(--on-ink);}
+  .hero .eyebrow{color:var(--teal);}
+  .hero h1{color:var(--on-ink);font-size:clamp(2rem,4.6vw,3.25rem);max-width:15em;margin-bottom:18px;}
+  .hero p{color:var(--on-ink-dim);max-width:36em;margin:0;}
+  .bg-sand{background:var(--sand);}
+  .head{text-align:center;max-width:40em;margin:0 auto 36px;}
+  .head h2{font-size:clamp(1.6rem,3.2vw,2.2rem);margin-bottom:12px;}
+  .head p{color:var(--muted);margin:0;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:clamp(26px,4vw,42px);max-width:600px;margin:0 auto;}
+  .card h3{font-size:1.2rem;margin-bottom:6px;}
+  .card .sub{color:var(--muted);font-size:.95rem;margin:0 0 22px;}
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-size:.9rem;font-weight:600;margin-bottom:7px;}
+  .field input{width:100%;padding:13px 15px;border:1px solid var(--line-strong);border-radius:9px;
+    font:inherit;font-size:1rem;background:#fff;color:var(--ink);}
+  .field input:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal);}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .btn{display:inline-block;border:1px solid transparent;border-radius:10px;padding:14px 26px;
+    font:inherit;font-weight:600;font-size:1rem;cursor:pointer;text-align:center;}
+  .btn-primary{background:var(--teal-deep);color:#fff;width:100%;}
+  .btn-primary:hover{background:#0b6560;}
+  .note{margin-top:15px;padding:12px 15px;border-radius:8px;font-weight:500;font-size:.95rem;display:none;}
+  .note.show{display:block;background:var(--teal-wash);color:var(--teal-ink);}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;
+    background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:44px;}
+  .step{background:var(--card);padding:clamp(24px,3vw,34px);}
+  .step .n{font-family:var(--serif);font-size:1.5rem;color:var(--teal-deep);}
+  .step .n::after{content:"";display:block;width:26px;height:2px;background:var(--teal);margin:10px 0 16px;}
+  .step h3{font-size:1.12rem;margin-bottom:8px;}
+  .step p{color:var(--muted);font-size:.96rem;margin:0;}
+  footer{background:var(--ink);color:var(--on-ink-dim);}
+  footer .container{padding-top:48px;padding-bottom:40px;}
+  footer .logo-f{width:190px;margin-bottom:14px;}
+  footer .tagline{max-width:34em;font-size:.95rem;margin:0 0 24px;}
+  footer .bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;font-size:.85rem;color:var(--on-ink-dim);}
+  footer a{color:var(--on-ink);}
+  @media (max-width:640px){ .row{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container">
+    <a href="https://samenontzorgen.nl" aria-label="SamenOntzorgen">
+      <svg class="logo" viewBox="0 0 820 200" role="img" aria-label="SamenOntzorgen: Minder zorgen, meer zorg">
+        <g transform="translate(5, 8) scale(0.73)">
+          <path fill="#19ada7" d="M113.72,43.85S135.45-.54,179.68,8.28c44.23,8.82,44.2,57.72,19.36,99.64-33.98,57.33-85.32,77.92-85.32,77.92,0,0,40.07-40.59,61.5-81.96,22.55-43.53,5.25-96.76-61.5-60.03Z"/>
+          <path fill="#d92536" d="M107.59,43.85S87.28,2.65,46.04,7.12C4.8,11.58-9.69,61.48,24.52,111.22c36.94,54.36,82.06,73.46,82.06,73.46,0,0-32.85-28.18-56.88-73.88-23.03-43.81-12.38-76.16,14.48-78.71,25.45-2.41,43.39,11.75,43.39,11.75Z"/>
+        </g>
+        <text x="165" y="112" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="78" letter-spacing="-1"><tspan fill="#d92536">Samen</tspan><tspan fill="#19ada7">Ontzorgen</tspan></text>
+        <text x="166" y="152" font-family="Arial, Helvetica, sans-serif" font-style="italic" font-weight="500" font-size="32" fill="#19ada7">Minder zorgen, meer zorg</text>
+      </svg>
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Voor u als budgethouder</div>
+    <h1>Er is een zorgverlener gevonden.</h1>
+    <p>U heeft van ons een bericht gekregen omdat er een zelfstandige zorgverlener is die past bij uw zorgvraag. Laat hieronder uw gegevens achter, dan nemen wij binnen één werkdag contact met u op voor een vrijblijvende kennismaking.</p>
+  </div>
+</section>
+
+<section class="bg-sand">
+  <div class="container">
+    <div class="card">
+      <h3>Neem contact met mij op</h3>
+      <p class="sub">Een telefoonnummer of een e-mailadres is genoeg, wat u prettig vindt.</p>
+      <form id="form">
+        <div class="field">
+          <label for="naam">Uw naam</label>
+          <input type="text" id="naam" name="naam" required autocomplete="name" />
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="telefoon">Telefoonnummer</label>
+            <input type="tel" id="telefoon" name="telefoon" autocomplete="tel" placeholder="06 12 34 56 78" />
+          </div>
+          <div class="field">
+            <label for="email">E-mailadres</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="naam@voorbeeld.nl" />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Verstuur</button>
+        <div id="note" class="note"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="head">
+      <div class="eyebrow">Wat u kunt verwachten</div>
+      <h2>U beslist zelf, elke stap</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <h3>Wij nemen contact met u op</h3>
+        <p>Binnen één werkdag, per telefoon of e-mail. We bespreken kort uw zorgvraag en wat u zoekt.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h3>U maakt kennis met de zorgverlener</h3>
+        <p>Vrijblijvend. U bepaalt zelf of het klikt en of u verder wilt.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h3>Duidelijke afspraken, zwart op wit</h3>
+        <p>Een vast tarief dat past binnen uw pgb. Wij rekenen geen marge op het zorgtarief, zo blijft er meer van uw budget over voor de zorg zelf.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <svg class="logo-f" viewBox="0 0 820 200" role="img" aria-label="SamenOntzorgen">
+      <g transform="translate(5, 8) scale(0.73)">
+        <path fill="#19ada7" d="M113.72,43.85S135.45-.54,179.68,8.28c44.23,8.82,44.2,57.72,19.36,99.64-33.98,57.33-85.32,77.92-85.32,77.92,0,0,40.07-40.59,61.5-81.96,22.55-43.53,5.25-96.76-61.5-60.03Z"/>
+        <path fill="#d92536" d="M107.59,43.85S87.28,2.65,46.04,7.12C4.8,11.58-9.69,61.48,24.52,111.22c36.94,54.36,82.06,73.46,82.06,73.46,0,0-32.85-28.18-56.88-73.88-23.03-43.81-12.38-76.16,14.48-78.71,25.45-2.41,43.39,11.75,43.39,11.75Z"/>
+      </g>
+      <text x="165" y="112" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="78" letter-spacing="-1"><tspan fill="#ffffff">Samen</tspan><tspan fill="#19ada7">Ontzorgen</tspan></text>
+      <text x="166" y="152" font-family="Arial, Helvetica, sans-serif" font-style="italic" font-weight="500" font-size="32" fill="#19ada7">Minder zorgen, meer zorg</text>
+    </svg>
+    <p class="tagline">Een coöperatie van en voor zorgprofessionals. Kostprijs plus servicebijdrage: geen marge, geen kleine lettertjes.</p>
+    <div class="bottom">&copy; 2026 Coöperatie SamenOntzorgen U.A. &middot; <a href="https://samenontzorgen.nl">samenontzorgen.nl</a> &middot; Minder zorgen, meer zorg</div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('form');
+    var note = document.getElementById('note');
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      if (!form.telefoon.value.trim() && !form.email.value.trim()) {
+        note.textContent = 'Vul een telefoonnummer of een e-mailadres in, dan kunnen we u bereiken.';
+        note.className = 'note show'; note.style.background = '#fde8e6'; note.style.color = '#b3261e';
+        return;
+      }
+      var btn = form.querySelector('button[type="submit"]');
+      var orig = btn.textContent; btn.textContent = 'Versturen…'; btn.disabled = true;
+      note.className = 'note'; note.style.background = ''; note.style.color = '';
+      var data = {
+        naam: form.naam.value,
+        email: form.email.value.trim(),
+        telefoon: form.telefoon.value.trim(),
+        bericht: 'Verzoek om contact via de losse landingspagina (gevonden), na een gevonden zorgverlener.'
+      };
+      try {
+        var res = await fetch('/contact', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
+        var j = await res.json();
+        if (res.ok && j.success) {
+          note.textContent = 'Bedankt. Wij nemen binnen één werkdag contact met u op.';
+          note.className = 'note show'; form.reset();
+        } else { throw new Error(j.message || 'fout'); }
+      } catch (err) {
+        note.textContent = 'Er ging iets mis. Probeer het opnieuw of mail naar info@samenontzorgen.nl';
+        note.className = 'note show'; note.style.background = '#fde8e6'; note.style.color = '#b3261e';
+      } finally { btn.textContent = orig; btn.disabled = false; }
+    });
+  })();
+</script>
+</body>
+</html>
