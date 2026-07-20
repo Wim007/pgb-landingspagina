@@ -41,11 +41,16 @@
     box-shadow:var(--shadow);padding:clamp(26px,4vw,42px);max-width:600px;margin:0 auto;}
   .card h3{font-size:1.2rem;margin-bottom:6px;}
   .card .sub{color:var(--muted);font-size:.95rem;margin:0 0 22px;}
+  .story{max-width:600px;margin:0 auto 28px;text-align:center;}
+  .story h2{font-size:clamp(1.4rem,2.6vw,1.85rem);margin-bottom:12px;}
+  .story p{color:var(--muted);margin:0 0 12px;}
+  .story p:last-child{margin-bottom:0;}
   .field{margin-bottom:18px;}
   .field label{display:block;font-size:.9rem;font-weight:600;margin-bottom:7px;}
-  .field input{width:100%;padding:13px 15px;border:1px solid var(--line-strong);border-radius:9px;
+  .field input,.field textarea{width:100%;padding:13px 15px;border:1px solid var(--line-strong);border-radius:9px;
     font:inherit;font-size:1rem;background:#fff;color:var(--ink);}
-  .field input:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal);}
+  .field textarea{min-height:110px;resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal);}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .btn{display:inline-block;border:1px solid transparent;border-radius:10px;padding:14px 26px;
     font:inherit;font-weight:600;font-size:1rem;cursor:pointer;text-align:center;}
@@ -96,6 +101,12 @@
 
 <section class="bg-sand">
   <div class="container">
+    <div class="story">
+      <h2>Dit doen wij voor u</h2>
+      <p>SamenOntzorgen is een coöperatie van en voor zorgprofessionals. Wij brengen u in contact met een zelfstandige zorgverlener die past bij uw zorgvraag.</p>
+      <p>Voordat u kennismaakt, controleren wij de zorgverlener voor u: diploma's, identiteitsbewijs, VOG, KvK-inschrijving, aansluiting bij een klachtencommissie en, waar van toepassing, de inschrijving in het BIG-register. Deze gegevens kunt u ook zelf inzien, zo weet u zeker dat u met een betrouwbare professional te maken heeft.</p>
+      <p>Wij helpen u bij de afspraken over het uurtarief, zodat het past binnen uw pgb en u zoveel mogelijk zorguren overhoudt. Het contract en de facturen zetten wij voor u klaar, en met uw eigen app houdt u uw uren bij, keurt u ze goed en beheert u alles op één plek. U houdt zelf de regie, wij ondersteunen u onderweg.</p>
+    </div>
     <div class="card">
       <h3>Neem contact met mij op</h3>
       <p class="sub">Een telefoonnummer of een e-mailadres is genoeg, wat u prettig vindt.</p>
@@ -113,6 +124,10 @@
             <label for="email">E-mailadres</label>
             <input type="email" id="email" name="email" autocomplete="email" placeholder="naam@voorbeeld.nl" />
           </div>
+        </div>
+        <div class="field">
+          <label for="zorgvraag">Uw zorgvraag</label>
+          <textarea id="zorgvraag" name="zorgvraag" required placeholder="Vertel kort welke zorg u zoekt, voor wie, en hoeveel uur per week ongeveer."></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Verstuur</button>
         <div id="note" class="note"></div>
@@ -141,7 +156,7 @@
       <div class="step">
         <div class="n">3</div>
         <h3>Duidelijke afspraken, zwart op wit</h3>
-        <p>Duidelijke afspraken over het tarief, zwart op wit, zonder verrassingen achteraf. U weet vooraf waar u aan toe bent.</p>
+        <p>Duidelijke afspraken over het tarief, zwart op wit. U weet vooraf precies waar u aan toe bent.</p>
       </div>
     </div>
   </div>
@@ -157,7 +172,7 @@
       <text x="165" y="112" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="78" letter-spacing="-1"><tspan fill="#ffffff">Samen</tspan><tspan fill="#19ada7">Ontzorgen</tspan></text>
       <text x="166" y="152" font-family="Arial, Helvetica, sans-serif" font-style="italic" font-weight="500" font-size="32" fill="#19ada7">Minder zorgen, meer zorg</text>
     </svg>
-    <p class="tagline">Een coöperatie van en voor zorgprofessionals, zonder winstoogmerk. Open kaart, geen kleine lettertjes.</p>
+    <p class="tagline">Een coöperatie van en voor zorgprofessionals. Open kaart, alles helder op een rij.</p>
     <p class="tagline">KvK: KVK_NUMMER_INVULLEN<br />Vragen vooraf? Mail gerust. <a href="mailto:info@samenontzorgen.nl">info@samenontzorgen.nl</a></p>
     <div class="bottom">&copy; 2026 Coöperatie SamenOntzorgen U.A. &middot; <a href="https://samenontzorgen.nl">samenontzorgen.nl</a> &middot; Minder zorgen, meer zorg</div>
   </div>
@@ -181,6 +196,7 @@
         naam: form.naam.value,
         email: form.email.value.trim(),
         telefoon: form.telefoon.value.trim(),
+        zorgvraag: form.zorgvraag.value.trim(),
         bericht: 'Verzoek om contact via de losse landingspagina (gevonden), na een gevonden zorgverlener.'
       };
       try {

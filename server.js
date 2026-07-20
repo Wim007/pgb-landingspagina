@@ -28,12 +28,12 @@ app.post('/contact', async (req, res) => {
   const emailUser = process.env.EMAIL_USER;
   const emailPass = process.env.EMAIL_PASS;
   const mailTo    = process.env.MAIL_TO || 'info@samenontzorgen.nl';
-  const { naam, email, telefoon, bericht } = req.body;
+  const { naam, email, telefoon, zorgvraag, bericht } = req.body;
 
-  if (!naam || !bericht || (!email && !telefoon)) {
+  if (!naam || !zorgvraag || !bericht || (!email && !telefoon)) {
     return res.status(400).json({
       success: false,
-      message: 'Naam, bericht en een e-mailadres of telefoonnummer zijn verplicht.'
+      message: 'Naam, zorgvraag en een e-mailadres of telefoonnummer zijn verplicht.'
     });
   }
 
@@ -63,7 +63,10 @@ app.post('/contact', async (req, res) => {
             ${email ? `<p style="color:#2C3E50;"><strong>E-mail:</strong> ${email}</p>` : ''}
             ${telefoon ? `<p style="color:#2C3E50;"><strong>Telefoon:</strong> ${telefoon}</p>` : ''}
             <hr style="border:none;border-top:1px solid #e0e0e0;margin:14px 0;">
-            <p style="color:#2C3E50;line-height:1.6;white-space:pre-wrap;">${bericht}</p>
+            <p style="color:#2C3E50;"><strong>Zorgvraag:</strong></p>
+            <p style="color:#2C3E50;line-height:1.6;white-space:pre-wrap;">${zorgvraag}</p>
+            <hr style="border:none;border-top:1px solid #e0e0e0;margin:14px 0;">
+            <p style="color:#7a8a8c;font-size:13px;line-height:1.6;white-space:pre-wrap;">${bericht}</p>
           </div>
         </div>`
     });
