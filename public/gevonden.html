@@ -43,9 +43,10 @@
   .card .sub{color:var(--muted);font-size:.95rem;margin:0 0 22px;}
   .field{margin-bottom:18px;}
   .field label{display:block;font-size:.9rem;font-weight:600;margin-bottom:7px;}
-  .field input{width:100%;padding:13px 15px;border:1px solid var(--line-strong);border-radius:9px;
+  .field input,.field textarea{width:100%;padding:13px 15px;border:1px solid var(--line-strong);border-radius:9px;
     font:inherit;font-size:1rem;background:#fff;color:var(--ink);}
-  .field input:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal);}
+  .field textarea{min-height:110px;resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal);}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .btn{display:inline-block;border:1px solid transparent;border-radius:10px;padding:14px 26px;
     font:inherit;font-weight:600;font-size:1rem;cursor:pointer;text-align:center;}
@@ -114,6 +115,10 @@
             <input type="email" id="email" name="email" autocomplete="email" placeholder="naam@voorbeeld.nl" />
           </div>
         </div>
+        <div class="field">
+          <label for="zorgvraag">Uw zorgvraag</label>
+          <textarea id="zorgvraag" name="zorgvraag" required placeholder="Vertel kort welke zorg u zoekt, voor wie, en hoeveel uur per week ongeveer."></textarea>
+        </div>
         <button type="submit" class="btn btn-primary">Verstuur</button>
         <div id="note" class="note"></div>
       </form>
@@ -181,6 +186,7 @@
         naam: form.naam.value,
         email: form.email.value.trim(),
         telefoon: form.telefoon.value.trim(),
+        zorgvraag: form.zorgvraag.value.trim(),
         bericht: 'Verzoek om contact via de losse landingspagina (gevonden), na een gevonden zorgverlener.'
       };
       try {
