@@ -141,9 +141,15 @@
           <label for="naam">Uw naam</label>
           <input type="text" id="naam" name="naam" required autocomplete="name" />
         </div>
-        <div class="field">
-          <label for="contact">Telefoonnummer of e-mailadres</label>
-          <input type="text" id="contact" name="contact" required autocomplete="tel" placeholder="06 12 34 56 78 of naam@voorbeeld.nl" />
+        <div class="row">
+          <div class="field">
+            <label for="telefoon">Telefoonnummer</label>
+            <input type="tel" id="telefoon" name="telefoon" required autocomplete="tel" placeholder="06 12 34 56 78" />
+          </div>
+          <div class="field">
+            <label for="email">E-mailadres</label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="naam@voorbeeld.nl" />
+          </div>
         </div>
         <div class="field">
           <span class="q">Staat uw zorgvraag nog open?</span>
@@ -199,13 +205,12 @@
     }
     form.addEventListener('submit', async function(e){
       e.preventDefault();
-      var contact = form.contact.value.trim();
-      if (!contact) {
-        showError('Vul een telefoonnummer of een e-mailadres in, zodat wij u kunnen bereiken.');
+      var telefoon = form.telefoon.value.trim();
+      var email = form.email.value.trim();
+      if (!telefoon || !email) {
+        showError('Vul zowel uw telefoonnummer als uw e-mailadres in, zodat wij u kunnen bereiken.');
         return;
       }
-      var email = '', telefoon = '';
-      if (contact.indexOf('@') !== -1) { email = contact; } else { telefoon = contact; }
 
       var open = form.zorgvraag_open.value || 'niet ingevuld';
       var wlz  = form.wlz.value || 'niet ingevuld';
