@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8" />
-<title>Er is een zorgverlener gevonden — SamenOntzorgen</title>
+<title>Een passende zorgprofessional voor u, SamenOntzorgen</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex" />
 <style>
@@ -51,6 +51,11 @@
     font:inherit;font-size:1rem;background:#fff;color:var(--ink);}
   .field textarea{min-height:110px;resize:vertical;}
   .field input:focus,.field textarea:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal);}
+  .q{display:block;font-size:.9rem;font-weight:600;margin-bottom:9px;}
+  .choices{display:flex;gap:22px;flex-wrap:wrap;}
+  .choices label{display:flex;align-items:center;gap:8px;font-size:1rem;font-weight:500;margin:0;cursor:pointer;}
+  .choices input{width:auto;margin:0;}
+  .reassure{color:var(--muted);font-size:.9rem;margin:16px 0 0;text-align:center;}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .btn{display:inline-block;border:1px solid transparent;border-radius:10px;padding:14px 26px;
     font:inherit;font-weight:600;font-size:1rem;cursor:pointer;text-align:center;}
@@ -59,12 +64,11 @@
   .note{margin-top:15px;padding:12px 15px;border-radius:8px;font-weight:500;font-size:.95rem;display:none;}
   .note.show{display:block;background:var(--teal-wash);color:var(--teal-ink);}
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;
-    background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:44px;}
+    background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
   .step{background:var(--card);padding:clamp(24px,3vw,34px);}
-  .step .n{font-family:var(--serif);font-size:1.5rem;color:var(--teal-deep);}
-  .step .n::after{content:"";display:block;width:26px;height:2px;background:var(--teal);margin:10px 0 16px;}
-  .step h3{font-size:1.12rem;margin-bottom:8px;}
-  .step p{color:var(--muted);font-size:.96rem;margin:0;}
+  .step h3{font-size:1.12rem;margin-bottom:10px;}
+  .step h3::after{content:"";display:block;width:26px;height:2px;background:var(--teal);margin:12px 0 0;}
+  .step p{color:var(--muted);font-size:.96rem;margin:12px 0 0;}
   footer{background:var(--ink);color:var(--on-ink-dim);}
   footer .container{padding-top:48px;padding-bottom:40px;}
   footer .logo-f{width:190px;margin-bottom:14px;}
@@ -94,72 +98,75 @@
 <section class="hero">
   <div class="container">
     <div class="eyebrow">Voor u als budgethouder</div>
-    <h1>Er is een zorgverlener gevonden.</h1>
-    <p>Een zorgverlener vinden die echt bij u past, is vaak een lange en onzekere zoektocht. Voor u kan die nu voorbij zijn: er is een zelfstandige zorgverlener die past bij uw zorgvraag. Laat hieronder uw gegevens en uw zorgvraag achter, dan gaan wij voor u aan de slag.</p>
+    <h1>Wij hebben mogelijk een passende zorgprofessional voor u gevonden</h1>
+    <p>U ontvangt deze pagina omdat wij uw oproep hebben gezien en denken dat er een zelfstandige zorgprofessional is die mogelijk bij uw zorgvraag past. U zorgt al lang zelf, en dan is iemand vinden die blijft en die het echt kan een zoektocht op zich.</p>
   </div>
 </section>
 
 <section class="bg-sand">
   <div class="container">
     <div class="story">
-      <h2>U hoeft er niet alleen voor te staan</h2>
-      <p>De juiste zorg regelen betekent vaak: zoeken naar iemand die past, en ondertussen worstelen met de administratie, de regels en de vraag of iemand wel te vertrouwen is. Dat is veel, en vaak staat u er alleen voor.</p>
-      <p>Zo hoeft het niet. Een betrouwbare zorgverlener die bij u past, duidelijke afspraken en rust in de papieren. Zodat er weer tijd en aandacht overblijft voor wat echt telt.</p>
-      <p>SamenOntzorgen is een coöperatie van en voor zorgprofessionals. Elke zorgverlener controleren wij vooraf: diploma's, identiteitsbewijs, VOG, KvK-inschrijving, aansluiting bij een klachtencommissie en, waar van toepassing, het BIG-register. Deze gegevens kunt u ook zelf inzien.</p>
-      <p>Wij helpen u bij de afspraken over het uurtarief, zodat het binnen uw pgb past. Het contract en de facturen zetten wij voor u klaar, en met de app van SamenOntzorgen beheert u alles overzichtelijk op één plek. U houdt zelf de regie.</p>
-      <p><a href="https://www.samenontzorgen.nl/pgb" target="_blank" rel="noopener">Lees meer over pgb op de website van SamenOntzorgen.</a></p>
-    </div>
-    <div class="card">
-      <h3>Laat uw gegevens achter</h3>
-      <p class="sub">Vul uw gegevens en uw zorgvraag in. Een telefoonnummer of een e-mailadres is genoeg om u te bereiken.</p>
-      <form id="form">
-        <div class="field">
-          <label for="naam">Uw naam</label>
-          <input type="text" id="naam" name="naam" required autocomplete="name" />
-        </div>
-        <div class="row">
-          <div class="field">
-            <label for="telefoon">Telefoonnummer</label>
-            <input type="tel" id="telefoon" name="telefoon" autocomplete="tel" placeholder="06 12 34 56 78" />
-          </div>
-          <div class="field">
-            <label for="email">E-mailadres</label>
-            <input type="email" id="email" name="email" autocomplete="email" placeholder="naam@voorbeeld.nl" />
-          </div>
-        </div>
-        <div class="field">
-          <label for="zorgvraag">Uw zorgvraag</label>
-          <textarea id="zorgvraag" name="zorgvraag" required placeholder="Vertel kort welke zorg u zoekt, voor wie, en hoeveel uur per week ongeveer."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Verstuur</button>
-        <div id="note" class="note"></div>
-      </form>
+      <h2>Wat vaststaat en wat nog niet</h2>
+      <p>De zorgprofessional heeft interesse in dit soort zorg. Of het ook echt past, moeten we samen nog bekijken: de zorgvraag, de tijden en de persoon.</p>
+      <p>U beslist zelf of er een kennismaking komt. Wij delen niets over u met de zorgverlener voordat u daar akkoord voor geeft.</p>
     </div>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="head">
-      <div class="eyebrow">Wat u kunt verwachten</div>
-      <h2>U beslist zelf, elke stap</h2>
-    </div>
     <div class="steps">
       <div class="step">
-        <div class="n">1</div>
-        <h3>U vult het formulier in</h3>
-        <p>Met uw gegevens en uw zorgvraag. Zo weten wij wie u bent en welke zorg u zoekt.</p>
+        <h3>Hoe het werkt</h3>
+        <p>De zorgverlener werkt rechtstreeks voor u. U en de zorgverlener sluiten samen een zorgovereenkomst. Vooraf leggen wij u één totaal uurtarief voor, zwart op wit, zonder verrassingen achteraf.</p>
       </div>
       <div class="step">
-        <div class="n">2</div>
-        <h3>Wij onderhandelen de prijs</h3>
-        <p>Wij bespreken het uurtarief met de zorgverlener, zodat het binnen uw pgb past. U hoort van ons wat het wordt.</p>
+        <h3>Wat wij doen</h3>
+        <p>Wij controleren de relevante documenten van onze leden. Als u dat wilt, helpen wij u en de zorgverlener stap voor stap door de zorgovereenkomst en de zorgbeschrijving. Het zorgkantoor beoordeelt de overeenkomst uiteindelijk en geeft de goedkeuring.</p>
       </div>
-      <div class="step">
-        <div class="n">3</div>
-        <h3>Na uw akkoord brengen wij u in contact</h3>
-        <p>Gaat u akkoord met de prijs? Dan brengen wij u en de zorgverlener bij elkaar. Daarna bespreekt en regelt u de zorg rechtstreeks met elkaar.</p>
-      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-sand">
+  <div class="container">
+    <div class="story">
+      <h2>Wat u nu kunt doen</h2>
+      <p>Wilt u meer weten over deze zorgprofessional? Laat uw gegevens achter, dan nemen wij contact met u op. U zit nergens aan vast.</p>
+    </div>
+    <div class="card">
+      <h3>Laat uw gegevens achter</h3>
+      <form id="form">
+        <div class="field">
+          <label for="naam">Uw naam</label>
+          <input type="text" id="naam" name="naam" required autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="contact">Telefoonnummer of e-mailadres</label>
+          <input type="text" id="contact" name="contact" required autocomplete="tel" placeholder="06 12 34 56 78 of naam@voorbeeld.nl" />
+        </div>
+        <div class="field">
+          <span class="q">Staat uw zorgvraag nog open?</span>
+          <div class="choices">
+            <label><input type="radio" name="zorgvraag_open" value="ja" required /> Ja</label>
+            <label><input type="radio" name="zorgvraag_open" value="nee" /> Nee</label>
+          </div>
+        </div>
+        <div class="field">
+          <span class="q">Gaat het om een pgb vanuit de Wet langdurige zorg (Wlz)?</span>
+          <div class="choices">
+            <label><input type="radio" name="wlz" value="ja" required /> Ja</label>
+            <label><input type="radio" name="wlz" value="weet ik niet" /> Weet ik niet</label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="aanvulling">Ruimte voor een korte aanvulling</label>
+          <textarea id="aanvulling" name="aanvulling" placeholder="Wilt u nog iets toevoegen? Dat kan hier."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Ik ontvang graag informatie over de zorgprofessional</button>
+        <div id="note" class="note"></div>
+        <p class="reassure">Geen verplichtingen. Wij nemen binnen enkele dagen contact met u op.</p>
+      </form>
     </div>
   </div>
 </section>
@@ -184,33 +191,49 @@
   (function(){
     var form = document.getElementById('form');
     var note = document.getElementById('note');
+    function showError(msg){
+      note.textContent = msg;
+      note.className = 'note show';
+      note.style.background = '#fde8e6';
+      note.style.color = '#b3261e';
+    }
     form.addEventListener('submit', async function(e){
       e.preventDefault();
-      if (!form.telefoon.value.trim() && !form.email.value.trim()) {
-        note.textContent = 'Vul een telefoonnummer of een e-mailadres in, dan kunnen we u bereiken.';
-        note.className = 'note show'; note.style.background = '#fde8e6'; note.style.color = '#b3261e';
+      var contact = form.contact.value.trim();
+      if (!contact) {
+        showError('Vul een telefoonnummer of een e-mailadres in, zodat wij u kunnen bereiken.');
         return;
       }
+      var email = '', telefoon = '';
+      if (contact.indexOf('@') !== -1) { email = contact; } else { telefoon = contact; }
+
+      var open = form.zorgvraag_open.value || 'niet ingevuld';
+      var wlz  = form.wlz.value || 'niet ingevuld';
+      var aanvulling = form.aanvulling.value.trim();
+
+      var zorgvraag = 'Zorgvraag nog open: ' + open + '. PGB vanuit Wlz: ' + wlz + '.';
+      if (aanvulling) { zorgvraag += ' Aanvulling: ' + aanvulling; }
+
       var btn = form.querySelector('button[type="submit"]');
-      var orig = btn.textContent; btn.textContent = 'Versturen…'; btn.disabled = true;
+      var orig = btn.textContent; btn.textContent = 'Versturen...'; btn.disabled = true;
       note.className = 'note'; note.style.background = ''; note.style.color = '';
+
       var data = {
         naam: form.naam.value,
-        email: form.email.value.trim(),
-        telefoon: form.telefoon.value.trim(),
-        zorgvraag: form.zorgvraag.value.trim(),
-        bericht: 'Verzoek om contact via de losse landingspagina (gevonden), na een gevonden zorgverlener.'
+        email: email,
+        telefoon: telefoon,
+        zorgvraag: zorgvraag,
+        bericht: 'Verzoek om informatie over de gevonden zorgprofessional, via de PGB-landingspagina (gevonden).'
       };
       try {
         var res = await fetch('/contact', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
         var j = await res.json();
         if (res.ok && j.success) {
-          note.textContent = 'Bedankt. Wij nemen binnen één werkdag contact met u op.';
+          note.textContent = 'Bedankt. Wij nemen binnen enkele dagen contact met u op.';
           note.className = 'note show'; form.reset();
         } else { throw new Error(j.message || 'fout'); }
       } catch (err) {
-        note.textContent = 'Er ging iets mis. Probeer het opnieuw of mail naar info@samenontzorgen.nl';
-        note.className = 'note show'; note.style.background = '#fde8e6'; note.style.color = '#b3261e';
+        showError('Er ging iets mis. Probeer het opnieuw of mail naar info@samenontzorgen.nl');
       } finally { btn.textContent = orig; btn.disabled = false; }
     });
   })();
