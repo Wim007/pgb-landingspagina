@@ -45,6 +45,9 @@
   .story h2{font-size:clamp(1.4rem,2.6vw,1.85rem);margin-bottom:12px;}
   .story p{color:var(--muted);margin:0 0 12px;}
   .story p:last-child{margin-bottom:0;}
+  .story .avatar{width:116px;height:116px;border-radius:50%;overflow:hidden;
+    margin:8px auto 18px;background:var(--teal-wash);border:1px solid var(--line);}
+  .story .avatar img{width:100%;height:100%;object-fit:cover;}
   .field{margin-bottom:18px;}
   .field label{display:block;font-size:.9rem;font-weight:600;margin-bottom:7px;}
   .field input,.field textarea{width:100%;padding:13px 15px;border:1px solid var(--line-strong);border-radius:9px;
@@ -108,9 +111,13 @@
 <section>
   <div class="container">
     <div class="story">
-      <h2>Wie wij zijn</h2>
-      <p>SamenOntzorgen is een coöperatie van en voor zorgprofessionals, zonder winstoogmerk. Wij brengen een passende zelfstandige zorgverlener voor u in beeld en controleren die vooraf.</p>
-      <p>Daarna lopen wij met u mee bij het uurtarief, de zorgovereenkomst en de administratie. U houdt zelf de regie en de beslissingen, wij ondersteunen u waar dat helpt.</p>
+      <h2>Even voorstellen</h2>
+      <p>U zorgt al lang voor iemand die u lief is. En u weet hoe zwaar het is om iemand te vinden die blijft. Elke keer een nieuw gezicht dat opnieuw moet leren hoe het thuis werkt, en daarbovenop het papierwerk dat op u neerkomt. En steeds die stille angst dat er iets misgaat.</p>
+      <div class="avatar">
+        <img src="/wim.jpg" alt="Wim Moddejongen" onerror="this.style.display='none';this.parentElement.style.background='var(--teal-wash)';this.parentElement.setAttribute('aria-label','Foto van Wim volgt nog');" />
+      </div>
+      <p>Ik ben Wim Moddejongen, oprichter van SamenOntzorgen. Ik zag hoe moeilijk het is om, als u zorg zelf inkoopt met een persoonsgebonden budget, een vast en vertrouwd iemand te vinden die blijft, en hoeveel geregel daarbij komt kijken. Dat kan eenvoudiger en rustiger. Daarom heb ik de coöperatie opgericht, met de zorgverleners zelf.</p>
+      <p>Wij brengen u rechtstreeks in contact met een zelfstandige zorgverlener uit de regio, controleren die vooraf, en helpen u met de zorgovereenkomst en de administratie. U beslist zelf wie er over de vloer komt. Wij wijzen de weg, u houdt het in handen. We zijn nieuw en bouwen dit stap voor stap op.</p>
     </div>
   </div>
 </section>
